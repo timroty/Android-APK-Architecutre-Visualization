@@ -1,0 +1,25 @@
+{
+  "name": "466architectureassignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "application.js",
+  "dependencies": {
+    "i": "^0.3.6",
+    "npm": "^7.10.0",
+    "xml-js": "^1.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timroty/466ArchitectureAssignment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timroty/466ArchitectureAssignment/issues"
+  },
+  "homepage": "https://github.com/timroty/466ArchitectureAssignment#readme"
+}
