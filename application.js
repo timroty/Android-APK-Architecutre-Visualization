@@ -1,22 +1,29 @@
 // Include the fs module
 var fs = require('fs');
 var xmlParser = require('xml-js');
+var xml2js = require('xml2js');
 
 const dir = './Messenger.xml'
 let middleObject = {};
 const path = './ArchStudioXML.xml'
 
 let outputObject = {
-	xADL: {
-		structure: {
-			component: [],
-            link:[]
+	"xadlcore_3_0:xADL": {
+		"structure_3_0:structure": {
+			"structure_3_0:component": [],
+            "structure_3_0:link":[],
+            attr:{
+                "structure_3_0:id":"structure1",
+                "structure_3_0:name":"Program_Structure"
+            }
         },
-        "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "_xmlns:hints_3_0": "http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd",
-        "_xmlns:structure_3_0": "http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd",
-        "_xmlns:xadlcore_3_0": "http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd",
-        "__prefix": "xadlcore_3_0"
+        attr: {
+            "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "_xmlns:hints_3_0": "http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd",
+            "_xmlns:structure_3_0": "http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd",
+            "_xmlns:xadlcore_3_0": "http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd",
+        }
+       
     }
 }
 
@@ -37,13 +44,14 @@ async function readCovertFile() {
     });
 }
 
-async function buildArchStudioFile(outputObject) {
+async function buildArchStudioFile() {
     return new Promise((resolve, reject) => {
-        var options = { compact: true, ignoreComment: true, spaces: 4 };
-        var parsedXML = xmlParser.json2xml(outputObject, options)
+
+        var builder = new xml2js.Builder({attrkey: "attr"});
+        var xml = builder.buildObject(outputObject); 
 
         resolve(
-            fs.writeFile(path, parsedXML, function(error) {
+            fs.writeFile(path, xml, function(error) {
                 if (error) {
                     reject(error);
                 }
@@ -60,30 +68,33 @@ async function buildArchStudioObject() {
     for (let i in keys) {
         
         let tempComponent = {
-            "interface": [],
-            "ext": {
-                "hint": [{
+            "structure_3_0:interface": [],
+
+            "structure_3_0:ext" : {
+                "hints_3_0:hint" : {
+                    attr : {
                         "_hints_3_0:hint": "org.eclipse.swt.graphics.Rectangle:" + middleObject.components[keys[i]].x_coord + "," + middleObject.components[keys[i]].y_coord + "," + middleObject.components[keys[i]].width + "," + middleObject.components[keys[i]].height,
                         "_hints_3_0:name": "bounds",
-                        "__prefix": "hints_3_0"
-                    },
-                    {
+                    }
+                },
+                "hints_3_0:hint" : {
+                    attr : {
                         "_hints_3_0:hint": "org.eclipse.swt.graphics.RGB:197,203,245",
                         "_hints_3_0:name": "color",
-                        "__prefix": "hints_3_0"
                     }
-                ],
-                "_xsi:type": "hints_3_0:HintsExtension",
-                "__prefix": "structure_3_0"
+                },
+                attr : {
+                    xsi:type="hints_3_0:HintsExtension"
+                }
             },
-            '__prefix': "structure_3_0",
-            '_structure_3_0:id': middleObject.components[keys[i]].id,
-            '_structure_3_0:name': middleObject.components[keys[i]].name,
+            attr : {
+                '_structure_3_0:id': middleObject.components[keys[i]].id,
+                '_structure_3_0:name': middleObject.components[keys[i]].name
+            }
         }
 
-        for (let j = 0; j < middleObject.components[keys[i]].interface.length; j++) {
-            // TODO CHANGE THE JS POINT 2D
 
+        for (let j = 0; j < middleObject.components[keys[i]].interface.length; j++) {
             let x = 0;
             let y = 0;
 
@@ -101,43 +112,40 @@ async function buildArchStudioObject() {
             }
 
             let interfaceObject = {
-                "ext": {
-                    "hint": {
-                        "_hints_3_0:hint": "java.awt.geom.Point2D:1," + x + "," + y,
-                        "_hints_3_0:name": "location",
-                        "__prefix": "hints_3_0"
+                "structure_3_0:ext": {
+                    "hints_3_0:hint": {
+                        attr : {
+                            "_hints_3_0:hint": "java.awt.geom.Point2D:1," + x + "," + y,
+                            "_hints_3_0:name": "location"
+                        },
                     },
-                    "_xsi:type": "hints_3_0:HintsExtension",
-                    "__prefix": "structure_3_0"
+                    attr :{
+                        "_xsi:type": "hints_3_0:HintsExtension"
+                    }
                 },
-                "_structure_3_0:direction": middleObject.components[keys[i]].interface[j].direction,
-                "_structure_3_0:id": middleObject.components[keys[i]].interface[j].id,
-                "_structure_3_0:name": "[New Interface]",
-                "__prefix": "structure_3_0"
+                attr : {
+                    "_structure_3_0:direction": middleObject.components[keys[i]].interface[j].direction,
+                    "_structure_3_0:id": middleObject.components[keys[i]].interface[j].id,
+                    "_structure_3_0:name": "[New Interface]",
+                }
             }
 
-            tempComponent.interface.push(interfaceObject)
+            tempComponent["structure_3_0:interface"].push(interfaceObject)
         }
 
-        outputObject.xADL.structure.component.push(tempComponent)
+        outputObject["xadlcore_3_0:xADL"]["structure_3_0:structure"]["structure_3_0:component"].push(tempComponent)
     }	
     
     for(let i = 0; i < middleObject.links.length; i ++){
         let linkObject = { 
-            "point1": {
-            "__prefix": "structure_3_0",
-            "__text": middleObject.links[i].interface1
-            },
-            "point2": {
-            "__prefix": "structure_3_0",
-            "__text": middleObject.links[i].interface2
-            },
-            "_structure_3_0:id": middleObject.links[i].id,
-			"_structure_3_0:name": "[New Link]",
-			"__prefix": "structure_3_0"
-        } 
-
-        outputObject.xADL.structure.link.push(linkObject)
+            "structure_3_0:point1": middleObject.links[i].interface1,
+            "structure_3_0:point2": middleObject.links[i].interface2,
+            attr :{
+                "_structure_3_0:id": middleObject.links[i].id,
+                "_structure_3_0:name": "[New Link]",
+            }
+        }
+        outputObject["xadlcore_3_0:xADL"]["structure_3_0:structure"]["structure_3_0:link"].push(linkObject)
     }
 }
 
@@ -154,7 +162,7 @@ async function parseCovertFile() {
     const HEIGHT = 80;
     const WIDTH = 100;
     const OFFSET = 25;
-    const NUM_WIDE = 4;
+    const NUM_WIDE = Math.ceil(jsonComponents.length);
 
     let componentNum = 1;
     jsonComponents.forEach(element => {
@@ -219,9 +227,11 @@ async function parseCovertFile() {
 }
 
 async function main() {
-    await parseCovertFile();
+   await parseCovertFile();
 
     buildArchStudioObject();
+
+    buildArchStudioFile();
 
 }
 
