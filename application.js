@@ -6,6 +6,21 @@ const dir = './Messenger.xml'
 let middleObject = {};
 const path = './ArchStudioXML.xml'
 
+let outputObject = {
+	xADL: {
+		structure: {
+			component: []
+        },
+        "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+		"_xmlns:hints_3_0": "http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd",
+		"_xmlns:structure_3_0": "http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd",
+		"_xmlns:xadlcore_3_0": "http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd",
+		"__prefix": "xadlcore_3_0"
+    }
+}
+
+
+
 async function readCovertFile() {
     return new Promise((resolve,reject) => {
         let covertFile = undefined;
@@ -39,6 +54,60 @@ async function buildArchStudioFile(outputObject) {
     });
 }
 
+async function buildArchStudioObject () {
+
+    var keys = Object.keys(middleObject.components);
+    
+    for(let i in keys){
+
+        let tempComponent = {
+            "interface": [],
+            "ext": {
+                "hint": [
+                    {
+                        "_hints_3_0:hint": "org.eclipse.swt.graphics.Rectangle:" + middleObject.components[keys[i]].x_coord + "," + middleObject.components[keys[i]].y_coord + "," + middleObject.components[keys[i]].width + "," + middleObject.components[keys[i]].height,
+                        "_hints_3_0:name": "bounds",
+                        "__prefix": "hints_3_0"
+                    },
+                    {
+                        "_hints_3_0:hint": "org.eclipse.swt.graphics.RGB:197,203,245",
+                        "_hints_3_0:name": "color",
+                        "__prefix": "hints_3_0"
+                    }
+                ],
+                "_xsi:type": "hints_3_0:HintsExtension",
+                "__prefix": "structure_3_0"
+            },
+            '__prefix': "structure_3_0",
+            '_structure_3_0:id': middleObject.components[keys[i]].id,
+            '_structure_3_0:name': middleObject.components[keys[i]].name,
+        }
+
+        for(let j = 0; j < middleObject.components[keys[i]].interface.length; j ++){
+            // TODO CHANGE THE JS POINT 2D
+            let interfaceObject = {
+                "ext": {
+                    "hint": {
+                        "_hints_3_0:hint": "java.awt.geom.Point2D:1,0,0",
+                        "_hints_3_0:name": "location",
+                        "__prefix": "hints_3_0"
+                    },
+                    "_xsi:type": "hints_3_0:HintsExtension",
+                    "__prefix": "structure_3_0"
+                },
+                "_structure_3_0:direction": middleObject.components[keys[i]].interface[j].direction,
+                "_structure_3_0:id": middleObject.components[keys[i]].interface[j].id,
+                "_structure_3_0:name": "[New Interface]",
+                "__prefix": "structure_3_0"
+            }
+
+            tempComponent.interface.push(interfaceObject)
+        }
+
+        outputObject.xADL.structure.component.push(tempComponent)
+    }		
+}
+
 async function parseCovertFile() {
     const json = await readCovertFile();
 
@@ -49,17 +118,29 @@ async function parseCovertFile() {
     middleObject.components = [];
     middleObject.links = [];
 
+    const HEIGHT = 80;
+    const WIDTH = 100;
+    const OFFSET = 25;
+    const NUM_WIDE = 4;
+    
     let componentNum = 1;
     jsonComponents.forEach(element => {
         
         let name = element["elements"][1]["elements"][0]["text"]
         let type = element["elements"][0]["elements"][0]["text"]
         let id = "componentId" + componentNum;
+        
+        let x = ((componentNum * WIDTH) + (componentNum * OFFSET)) % ((WIDTH + OFFSET) * NUM_WIDE);   
+        let y = (HEIGHT + OFFSET) * Math.floor(componentNum / NUM_WIDE);
 
         var component = {
             "name" : name,
             "type" : type,
-            "id" : id
+            "id" : id, 
+            "x_coord" : x,
+            "y_coord" : y,
+            "height" : HEIGHT,
+            "width" : WIDTH
         }
 
         middleObject.components[name] = component
@@ -106,14 +187,16 @@ async function parseCovertFile() {
 
 async function main() {
     await parseCovertFile();
+
+    buildArchStudioObject();
     
-    var keys = Object.keys(middleObject.components);
+    //ar keys = Object.keys(middleObject.components);
 
     // for(let i in keys){
     //     console.log(middleObject.components[keys[i]])
     // }
 
-    // console.log(middleObject)
+    //console.log(middleObject)
 
 }
 
