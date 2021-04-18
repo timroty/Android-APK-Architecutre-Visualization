@@ -19,8 +19,6 @@ let outputObject = {
     }
 }
 
-
-
 async function readCovertFile() {
     return new Promise((resolve,reject) => {
         let covertFile = undefined;
