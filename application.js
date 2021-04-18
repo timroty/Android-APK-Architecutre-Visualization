@@ -8,7 +8,8 @@ let middleObject = {};
 let outputObject = {
 	xADL: {
 		structure: {
-			component: []
+			component: [],
+            link:[]
         },
         "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
 		"_xmlns:hints_3_0": "http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd",
@@ -17,8 +18,6 @@ let outputObject = {
 		"__prefix": "xadlcore_3_0"
     }
 }
-
-
 
 async function readCovertFile() {
     return new Promise((resolve,reject) => {
@@ -42,7 +41,6 @@ async function buildArchStudioObject () {
     var keys = Object.keys(middleObject.components);
     
     for(let i in keys){
-
         let tempComponent = {
             "interface": [],
             "ext": {
@@ -66,8 +64,7 @@ async function buildArchStudioObject () {
             '_structure_3_0:name': middleObject.components[keys[i]].name,
         }
 
-        for(let j = 0; j < middleObject.components[keys[i]].interface.length; j ++){
-            // TODO CHANGE THE JS POINT 2D
+        for(let j = 0; j < middleObject.components[keys[i]].interface.length; j ++) {            
             let interfaceObject = {
                 "ext": {
                     "hint": {
@@ -88,7 +85,25 @@ async function buildArchStudioObject () {
         }
 
         outputObject.xADL.structure.component.push(tempComponent)
-    }		
+    }	
+    
+    for(let i = 0; i < middleObject.links.length; i ++){
+        let linkObject = { 
+            "point1": {
+            "__prefix": "structure_3_0",
+            "__text": middleObject.links[i].interface1
+            },
+            "point2": {
+            "__prefix": "structure_3_0",
+            "__text": middleObject.links[i].interface2
+            },
+            "_structure_3_0:id": middleObject.links[i].id,
+			"_structure_3_0:name": "[New Link]",
+			"__prefix": "structure_3_0"
+        } 
+
+        outputObject.xADL.structure.link.push(linkObject)
+    }
 }
 
 async function parseCovertFile() {
@@ -172,18 +187,7 @@ async function main() {
     await parseCovertFile();
 
     buildArchStudioObject();
-    
-    //ar keys = Object.keys(middleObject.components);
-
-    // for(let i in keys){
-    //     console.log(middleObject.components[keys[i]])
-    // }
-
-    //console.log(middleObject)
 
 }
 
 main();
-
-  
-
