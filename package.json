@@ -5,9 +5,7 @@
   "main": "application.js",
   "dependencies": {
     "i": "^0.3.6",
-    "json2xml": "^0.1.3",
     "npm": "^7.10.0",
-    "prettify-xml": "^1.2.0",
     "xml-js": "^1.6.11",
     "xml2js": "^0.4.23"
   },

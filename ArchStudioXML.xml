@@ -1,130 +1,130 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<xadlcore_3_0:xADL _xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" _xmlns:hints_3_0="http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd" _xmlns:structure_3_0="http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd" _xmlns:xadlcore_3_0="http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd">
+<xadlcore_3_0:xADL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:hints_3_0="http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd" xmlns:structure_3_0="http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd" xmlns:xadlcore_3_0="http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd">
   <structure_3_0:structure structure_3_0:id="structure1" structure_3_0:name="Program_Structure">
-    <structure_3_0:component _structure_3_0:id="componentId1" _structure_3_0:name="com.sdalab.messenger.MainActivity">
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut1" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+    <structure_3_0:component structure_3_0:id="componentId1" structure_3_0:name="com.sdalab.messenger.MainActivity">
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut1" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut2" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut2" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut3" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut3" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut4" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut4" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut5" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut5" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut6" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut6" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut7" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut7" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="out" _structure_3_0:id="interfaceOut8" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="out" structure_3_0:id="interfaceOut8" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,4651444358887768000,4651444358887768000" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:ext xsi="hints_3_0:HintsExtension">
-        <hints_3_0:hint _hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" _hints_3_0:name="color"/>
+      <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+        <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" hints_3_0:name="color"/>
       </structure_3_0:ext>
     </structure_3_0:component>
-    <structure_3_0:component _structure_3_0:id="componentId2" _structure_3_0:name="com.sdalab.messenger.SendSmsService">
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn3" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+    <structure_3_0:component structure_3_0:id="componentId2" structure_3_0:name="com.sdalab.messenger.SendSmsService">
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn3" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn4" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn4" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn7" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn7" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn8" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn8" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:ext xsi="hints_3_0:HintsExtension">
-        <hints_3_0:hint _hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" _hints_3_0:name="color"/>
+      <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+        <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" hints_3_0:name="color"/>
       </structure_3_0:ext>
     </structure_3_0:component>
-    <structure_3_0:component _structure_3_0:id="componentId3" _structure_3_0:name="com.sdalab.messenger.PublishDataService">
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn1" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+    <structure_3_0:component structure_3_0:id="componentId3" structure_3_0:name="com.sdalab.messenger.PublishDataService">
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn1" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn2" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn2" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn5" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn5" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:interface _structure_3_0:direction="in" _structure_3_0:id="interfaceIn6" _structure_3_0:name="[New Interface]">
-        <structure_3_0:ext _xsi:type="hints_3_0:HintsExtension">
-          <hints_3_0:hint _hints_3_0:hint="java.awt.geom.Point2D:1,0,0" _hints_3_0:name="location"/>
+      <structure_3_0:interface structure_3_0:direction="in" structure_3_0:id="interfaceIn6" structure_3_0:name="[New Interface]">
+        <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+          <hints_3_0:hint hints_3_0:hint="java.awt.geom.Point2D:1,0,0" hints_3_0:name="location"/>
         </structure_3_0:ext>
       </structure_3_0:interface>
-      <structure_3_0:ext xsi="hints_3_0:HintsExtension">
-        <hints_3_0:hint _hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" _hints_3_0:name="color"/>
+      <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+        <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" hints_3_0:name="color"/>
       </structure_3_0:ext>
     </structure_3_0:component>
-    <structure_3_0:link _structure_3_0:id="linkId1" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId1" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut1</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn1</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId2" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId2" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut2</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn2</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId3" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId3" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut3</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn3</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId4" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId4" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut4</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn4</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId5" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId5" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut5</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn5</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId6" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId6" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut6</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn6</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId7" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId7" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut7</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn7</structure_3_0:point2>
     </structure_3_0:link>
-    <structure_3_0:link _structure_3_0:id="linkId8" _structure_3_0:name="[New Link]">
+    <structure_3_0:link structure_3_0:id="linkId8" structure_3_0:name="[New Link]">
       <structure_3_0:point1>interfaceOut8</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn8</structure_3_0:point2>
     </structure_3_0:link>

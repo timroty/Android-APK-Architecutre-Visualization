@@ -18,10 +18,10 @@ let outputObject = {
             }
         },
         attr: {
-            "_xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-            "_xmlns:hints_3_0": "http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd",
-            "_xmlns:structure_3_0": "http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd",
-            "_xmlns:xadlcore_3_0": "http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd",
+            "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+            "xmlns:hints_3_0": "http://www.archstudio.org/xadl3/schemas/hints-3.0.xsd",
+            "xmlns:structure_3_0": "http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd",
+            "xmlns:xadlcore_3_0": "http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd",
         }
        
     }
@@ -79,17 +79,17 @@ async function buildArchStudioObject() {
                 },
                 "hints_3_0:hint" : {
                     attr : {
-                        "_hints_3_0:hint": "org.eclipse.swt.graphics.RGB:197,203,245",
-                        "_hints_3_0:name": "color",
+                        "hints_3_0:hint": "org.eclipse.swt.graphics.RGB:197,203,245",
+                        "hints_3_0:name": "color",
                     }
                 },
                 attr : {
-                    xsi:type="hints_3_0:HintsExtension"
+                    "xsi:type":"hints_3_0:HintsExtension"
                 }
             },
             attr : {
-                '_structure_3_0:id': middleObject.components[keys[i]].id,
-                '_structure_3_0:name': middleObject.components[keys[i]].name
+                'structure_3_0:id': middleObject.components[keys[i]].id,
+                'structure_3_0:name': middleObject.components[keys[i]].name
             }
         }
 
@@ -115,18 +115,18 @@ async function buildArchStudioObject() {
                 "structure_3_0:ext": {
                     "hints_3_0:hint": {
                         attr : {
-                            "_hints_3_0:hint": "java.awt.geom.Point2D:1," + x + "," + y,
-                            "_hints_3_0:name": "location"
+                            "hints_3_0:hint": "java.awt.geom.Point2D:1," + x + "," + y,
+                            "hints_3_0:name": "location"
                         },
                     },
                     attr :{
-                        "_xsi:type": "hints_3_0:HintsExtension"
+                        "xsi:type": "hints_3_0:HintsExtension"
                     }
                 },
                 attr : {
-                    "_structure_3_0:direction": middleObject.components[keys[i]].interface[j].direction,
-                    "_structure_3_0:id": middleObject.components[keys[i]].interface[j].id,
-                    "_structure_3_0:name": "[New Interface]",
+                    "structure_3_0:direction": middleObject.components[keys[i]].interface[j].direction,
+                    "structure_3_0:id": middleObject.components[keys[i]].interface[j].id,
+                    "structure_3_0:name": "[New Interface]",
                 }
             }
 
@@ -141,8 +141,8 @@ async function buildArchStudioObject() {
             "structure_3_0:point1": middleObject.links[i].interface1,
             "structure_3_0:point2": middleObject.links[i].interface2,
             attr :{
-                "_structure_3_0:id": middleObject.links[i].id,
-                "_structure_3_0:name": "[New Link]",
+                "structure_3_0:id": middleObject.links[i].id,
+                "structure_3_0:name": "[New Link]",
             }
         }
         outputObject["xadlcore_3_0:xADL"]["structure_3_0:structure"]["structure_3_0:link"].push(linkObject)
