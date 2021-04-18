@@ -4,6 +4,7 @@ var xmlParser = require('xml-js');
 
 const dir = './Messenger.xml'
 let middleObject = {};
+const path = './ArchStudioXML.xml'
 
 async function readCovertFile() {
     return new Promise((resolve,reject) => {
@@ -17,6 +18,22 @@ async function readCovertFile() {
 
             resolve(xmlParser.xml2js(covertFile));
         });
+    }).catch(error => {
+        console.log(error)
+    });
+}
+
+async function buildArchStudioFile(outputObject) {
+    return new Promise((resolve,reject) => {
+        var options = {compact: true, ignoreComment: true, spaces: 4};
+        var parsedXML = xmlParser.json2xml(outputObject, options)
+        
+        resolve(
+        fs.writeFile(path, parsedXML, function (error){
+            if (error) {
+                reject(error);
+            }
+        }));
     }).catch(error => {
         console.log(error)
     });
