@@ -101,17 +101,29 @@ async function parseCovertFile() {
     middleObject.components = [];
     middleObject.links = [];
 
+    const HEIGHT = 80;
+    const WIDTH = 100;
+    const OFFSET = 25;
+    const NUM_WIDE = 4;
+    
     let componentNum = 1;
     jsonComponents.forEach(element => {
         
         let name = element["elements"][1]["elements"][0]["text"]
         let type = element["elements"][0]["elements"][0]["text"]
         let id = "componentId" + componentNum;
+        
+        let x = ((componentNum * WIDTH) + (componentNum * OFFSET)) % ((WIDTH + OFFSET) * NUM_WIDE);   
+        let y = (HEIGHT + OFFSET) * Math.floor(componentNum / NUM_WIDE);
 
         var component = {
             "name" : name,
             "type" : type,
-            "id" : id
+            "id" : id, 
+            "x_coord" : x,
+            "y_coord" : y,
+            "height" : HEIGHT,
+            "width" : WIDTH
         }
 
         middleObject.components[name] = component
