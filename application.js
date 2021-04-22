@@ -1,9 +1,19 @@
 // Include the fs module
 var fs = require('fs');
 var xmlParser = require('xml-js');
-var xml2js = require('xml2js');
+const minifyXML = require("minify-xml").minify;
+var Parser = require("fast-xml-parser").j2xParser;
 
-const dir = './Messenger.xml'
+//default options need not to set
+var defaultOptions = {
+    attributeNamePrefix : "attr",
+    attrNodeName: "attr",
+    format: true,
+    supressEmptyNode: true
+};
+var parser = new Parser(defaultOptions);
+
+let dir = ''
 let middleObject = {};
 const path = './ArchStudioXML.xml'
 
@@ -12,6 +22,23 @@ let outputObject = {
 		"structure_3_0:structure": {
 			"structure_3_0:component": [],
             "structure_3_0:link":[],
+            "structure_3_0:ext":{
+                "hints_3_0:hint": {
+                    attr:{
+                        "hints_3_0:hint":"org.eclipse.swt.graphics.Point:-738,-89", 
+                        "hints_3_0:name":"local-origin"
+                    }
+                },
+                "hints_3_0:hint ": {
+                    attr:{
+                        "hints_3_0:hint":"java.lang.Double:1.414213562373091",
+                        "hints_3_0:name":"local-scale"
+                    }
+                },
+                attr:{
+                    "xsi:type":"hints_3_0:HintsExtension"
+                },
+            },
             attr:{
                 "structure_3_0:id":"structure1",
                 "structure_3_0:name":"Program_Structure"
@@ -23,7 +50,6 @@ let outputObject = {
             "xmlns:structure_3_0": "http://www.archstudio.org/xadl3/schemas/structure-3.0.xsd",
             "xmlns:xadlcore_3_0": "http://www.archstudio.org/xadl3/schemas/xadlcore-3.0.xsd",
         }
-       
     }
 }
 
@@ -35,7 +61,7 @@ async function readCovertFile() {
             if (error) {
                 reject(error);
             }
-            covertFile = data;
+            covertFile = data; 
 
             resolve(xmlParser.xml2js(covertFile));
         });
@@ -47,8 +73,9 @@ async function readCovertFile() {
 async function buildArchStudioFile() {
     return new Promise((resolve, reject) => {
 
-        var builder = new xml2js.Builder({attrkey: "attr"});
-        var xml = builder.buildObject(outputObject); 
+        var xml = parser.parse(outputObject);
+        xml = minifyXML(xml,{removeWhitespaceBetweenTags:false, shortenNamespaces:false, removeUnusedDefaultNamespace:false})
+        xml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>\n'+ xml;
 
         resolve(
             fs.writeFile(path, xml, function(error) {
@@ -73,11 +100,11 @@ async function buildArchStudioObject() {
             "structure_3_0:ext" : {
                 "hints_3_0:hint" : {
                     attr : {
-                        "_hints_3_0:hint": "org.eclipse.swt.graphics.Rectangle:" + middleObject.components[keys[i]].x_coord + "," + middleObject.components[keys[i]].y_coord + "," + middleObject.components[keys[i]].width + "," + middleObject.components[keys[i]].height,
-                        "_hints_3_0:name": "bounds",
+                        "hints_3_0:hint": "org.eclipse.swt.graphics.Rectangle:" + middleObject.components[keys[i]].x_coord + "," + middleObject.components[keys[i]].y_coord + "," + middleObject.components[keys[i]].width + "," + middleObject.components[keys[i]].height,
+                        "hints_3_0:name": "bounds",
                     }
                 },
-                "hints_3_0:hint" : {
+                "hints_3_0:hint " : {
                     attr : {
                         "hints_3_0:hint": "org.eclipse.swt.graphics.RGB:197,203,245",
                         "hints_3_0:name": "color",
@@ -192,34 +219,47 @@ async function parseCovertFile() {
 
     let interfaceNum = 1;
     jsonIntents.forEach(element => {
+        let valid = true;
 
-        let sender = element["elements"][1]["elements"][0]["text"]
-        let component = element["elements"][2]["elements"][0]["text"]
+        let sender = element["elements"][1]["elements"]
+        let component = element["elements"][2]["elements"]
 
-        let senderInterfaceId = "interfaceOut" + interfaceNum;
-        let componentInterfaceId = "interfaceIn" + interfaceNum;
-        let linkId = "linkId" + interfaceNum;
+        
 
-        var sendInterface = {
-            direction: "out",
-            id: senderInterfaceId
+        if (sender === undefined || component === undefined){
+            valid = false;
+        } else {
+            sender = sender[0]["text"];
+            component = component[0]["text"];
         }
 
-        var componentInterface = {
-            direction: "in",
-            id: componentInterfaceId
+        if (valid){
+
+            let senderInterfaceId = "interfaceOut" + interfaceNum;
+            let componentInterfaceId = "interfaceIn" + interfaceNum;
+            let linkId = "linkId" + interfaceNum;
+
+            var sendInterface = {
+                direction: "out",
+                id: senderInterfaceId
+            }
+
+            var componentInterface = {
+                direction: "in",
+                id: componentInterfaceId
+            }
+
+            var linkInformation = {
+                id: linkId,
+                interface1: senderInterfaceId,
+                interface2: componentInterfaceId
+            }
+
+            middleObject.components[sender].interface.push(sendInterface);
+            middleObject.components[component].interface.push(componentInterface);
+
+            middleObject.links.push(linkInformation);
         }
-
-        var linkInformation = {
-            id: linkId,
-            interface1: senderInterfaceId,
-            interface2: componentInterfaceId
-        }
-
-        middleObject.components[sender].interface.push(sendInterface);
-        middleObject.components[component].interface.push(componentInterface);
-
-        middleObject.links.push(linkInformation);
 
         interfaceNum++;
 
@@ -227,12 +267,13 @@ async function parseCovertFile() {
 }
 
 async function main() {
-   await parseCovertFile();
+    dir = process.argv[2];
+
+    await parseCovertFile();
 
     buildArchStudioObject();
 
     buildArchStudioFile();
-
 }
 
 main();

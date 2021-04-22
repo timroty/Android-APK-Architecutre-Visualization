@@ -4,8 +4,11 @@
   "description": "",
   "main": "application.js",
   "dependencies": {
+    "fast-xml-parser": "^3.19.0",
     "i": "^0.3.6",
+    "minify-xml": "^2.5.0",
     "npm": "^7.10.0",
+    "prettify-xml": "^1.2.0",
     "xml-js": "^1.6.11",
     "xml2js": "^0.4.23"
   },

@@ -43,6 +43,7 @@
         </structure_3_0:ext>
       </structure_3_0:interface>
       <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+        <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.Rectangle:125,0,100,80" hints_3_0:name="bounds"/>
         <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" hints_3_0:name="color"/>
       </structure_3_0:ext>
     </structure_3_0:component>
@@ -68,6 +69,7 @@
         </structure_3_0:ext>
       </structure_3_0:interface>
       <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+        <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.Rectangle:250,0,100,80" hints_3_0:name="bounds"/>
         <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" hints_3_0:name="color"/>
       </structure_3_0:ext>
     </structure_3_0:component>
@@ -93,6 +95,7 @@
         </structure_3_0:ext>
       </structure_3_0:interface>
       <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+        <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.Rectangle:0,105,100,80" hints_3_0:name="bounds"/>
         <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.RGB:197,203,245" hints_3_0:name="color"/>
       </structure_3_0:ext>
     </structure_3_0:component>
@@ -128,5 +131,9 @@
       <structure_3_0:point1>interfaceOut8</structure_3_0:point1>
       <structure_3_0:point2>interfaceIn8</structure_3_0:point2>
     </structure_3_0:link>
+    <structure_3_0:ext xsi:type="hints_3_0:HintsExtension">
+      <hints_3_0:hint hints_3_0:hint="org.eclipse.swt.graphics.Point:-738,-89" hints_3_0:name="local-origin"/>
+      <hints_3_0:hint hints_3_0:hint="java.lang.Double:1.414213562373091" hints_3_0:name="local-scale"/>
+    </structure_3_0:ext>
   </structure_3_0:structure>
 </xadlcore_3_0:xADL>
