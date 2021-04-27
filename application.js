@@ -267,6 +267,11 @@ async function parseCovertFile() {
 }
 
 async function main() {
+    if (process.argv.length < 3){
+        console.log('\nNo filepath given. Please include the filepath as an argument. Exiting the program.\n');
+        return;
+    }
+
     dir = process.argv[2];
 
     await parseCovertFile();
@@ -274,6 +279,8 @@ async function main() {
     buildArchStudioObject();
 
     buildArchStudioFile();
+
+    console.log('\nSuccessfully created an ArchStudio compatible XML file.\n');
 }
 
 main();
