@@ -25,7 +25,7 @@ The entire pipeline from Android APK to an ArchStudio compatible file requires r
 ### Running Covert
 Covert is not compatible with Java versions 9 or newer, and requires a version of Java 8 to be installed and set as the default version. Currently, the team runs Covert with Java version "1.8.0_281".
  
-Before executing Covert, there is some setup that must be completed. First, select which Android APK should be analyzed with Covert. The team has provided two in the "Sample Android APK Data” folder. Next, place all Android APK files that will be analyzed in the demo folder, located at `covert > app_repo > demo`. Once the APK files have been placed in the folder, the Covert analysis can be run. 
+Before executing Covert, there is some setup that must be completed. First, select which Android APK should be analyzed with Covert. The team has provided two in the "Sample Android APK Data” folder. Next, place all Android APK files that will be analyzed in the demo folder, located at `covert/app_repo/demo`. Once the APK files have been placed in the folder, the Covert analysis can be run. 
  
 Covert is run from the command line. In the command line, navigate inside Covert folder. Next, run the following command: `./covert.sh demo`. This will kick off a series of steps that analyzes the Android APKs.
  
@@ -36,7 +36,7 @@ More information regarding covert can be found at the following site: https://se
 ### Running The Application
 The application requires Node to be installed as well as NPM. The application runs on the UNL CSE server on its current version of Node, v8.17.0 and its current version of NPM, 6.13.4.
  
-The application is also run from the command line and requires one command line argument, the file path a covert analysis model. The Covert models that resulted from running Covert on the Android APK files can be found at `covert > app_repo > demo > analysis > model`. For the easiest experience, the team copy and pasted those files into the main folder for easier file path specification when testing. If the application is run without specifying a file path, it will exit. If the file path is invalid or the path leads to a file that is not the specified model type, the program will not work properly.
+The application is also run from the command line and requires one command line argument, the file path a covert analysis model. The Covert models that resulted from running Covert on the Android APK files can be found at `covert/app_repo/demo/analysis/model`. For the easiest experience, the team copy and pasted those files into the main folder for easier file path specification when testing. If the application is run without specifying a file path, it will exit. If the file path is invalid or the path leads to a file that is not the specified model type, the program will not work properly.
  
 The application can be run by the following command: `node ./application.js filePath`. Using the Messenger.apk as an example, the model, named Messenger.xml, would be ran by calling `node ./application.js Messenger.xml`, assuming the model had been copied to the same location as the application.
  
